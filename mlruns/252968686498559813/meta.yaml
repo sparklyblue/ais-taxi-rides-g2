@@ -1,0 +1,6 @@
+artifact_location: file:///C:/Public/ais/ais-taxi-rides-g2/mlruns/252968686498559813
+creation_time: 1751008510251
+experiment_id: '252968686498559813'
+last_update_time: 1751008510251
+lifecycle_stage: active
+name: logistic-regression-classifier

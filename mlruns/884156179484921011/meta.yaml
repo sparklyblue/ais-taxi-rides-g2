@@ -1,0 +1,6 @@
+artifact_location: file:///C:/Public/ais/ais-taxi-rides-g2/mlruns/884156179484921011
+creation_time: 1751008309701
+experiment_id: '884156179484921011'
+last_update_time: 1751008309701
+lifecycle_stage: active
+name: random-forest-classifier-v2

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Public/ais/ais-taxi-rides-g2/mlruns/640615809331103637/981110ae4a6d4083af138eaaa8ffd6d2/artifacts
+end_time: 1750952368098
+entry_point_name: ''
+experiment_id: '640615809331103637'
+lifecycle_stage: active
+run_id: 981110ae4a6d4083af138eaaa8ffd6d2
+run_name: painted-snake-437
+run_uuid: 981110ae4a6d4083af138eaaa8ffd6d2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750952297047
+status: 3
+tags: []
+user_id: Lea

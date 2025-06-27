@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Public/ais/ais-taxi-rides-g2/mlruns/884156179484921011/76eaf91bf8564d2da1970d9d89710ec2/artifacts
+end_time: 1751008443508
+entry_point_name: ''
+experiment_id: '884156179484921011'
+lifecycle_stage: active
+run_id: 76eaf91bf8564d2da1970d9d89710ec2
+run_name: enchanting-carp-270
+run_uuid: 76eaf91bf8564d2da1970d9d89710ec2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1751008311592
+status: 3
+tags: []
+user_id: Lea

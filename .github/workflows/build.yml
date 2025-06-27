@@ -11,7 +11,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: peterrietzler/taxi-rides-outlier-detection
-  IMAGE_VERSION: 1.0.2
+  IMAGE_VERSION: 1.1.0
 
 jobs:
   test:
@@ -27,14 +27,57 @@ jobs:
           pip install -e .
           pip install .[test]
 
+      - name: Check code style
+        run: |
+          ruff check taxi_rides_outlier_detection tests
       - name: Run tests
         run: |
           pytest
   
+  train-models:
+    runs-on: ubuntu-latest
+    needs: test
+    container:
+      image: python:3.13-slim
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install training code
+        run: |
+          pip install -e .
+      - name: Train Random Forest Classifier 
+        run: |
+          train-random-forest-classifier data/labeled/taxi-rides.parquet random-forest-model
+          echo '### Random Forest Classifier' >> $GITHUB_STEP_SUMMARY
+          echo '```json' >> $GITHUB_STEP_SUMMARY
+          cat random-forest-model.metadata.json >> $GITHUB_STEP_SUMMARY
+      - name: Train Random Forest Classifier V2
+        run: |
+          train-random-forest-classifier-v2 data/labeled/taxi-rides.parquet random-forest-model-v2
+          echo '### Random Forest Classifier V2' >> $GITHUB_STEP_SUMMARY
+          echo '```json' >> $GITHUB_STEP_SUMMARY
+          cat random-forest-model-v2.metadata.json >> $GITHUB_STEP_SUMMARY
+      - name: Train Logistic Regression Classifier
+        run: |
+          train-logistic-regression-classifier data/labeled/taxi-rides.parquet logistc-regression-model
+          echo '### Logistic Regression Classifier' >> $GITHUB_STEP_SUMMARY
+          echo '```json' >> $GITHUB_STEP_SUMMARY
+          cat logistc-regression-model.metadata.json >> $GITHUB_STEP_SUMMARY
+
+      - name: Select best model by f1-score
+        run: |
+          sh select-best-model.sh random-forest-model.metadata.json random-forest-model-v2.metadata.json logistc-regression-model.metadata.json
+
+      - name: Upload model artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: trained-model
+          path: model
+
   build-image:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    needs: test
+    needs: train-models
     permissions:
       contents: read
       packages: write
@@ -43,6 +86,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       
+      - name: Download model artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: trained-model
+          path: model
+
       - name: Log in to the Container registry
         uses: docker/login-action@v3
         with:

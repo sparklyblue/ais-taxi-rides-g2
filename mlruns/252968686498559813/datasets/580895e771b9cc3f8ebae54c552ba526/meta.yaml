@@ -1,0 +1,8 @@
+digest: bfe47b76
+name: dataset
+profile: '{"num_rows": 133484, "num_elements": 266968}'
+schema: '{"mlflow_colspec": [{"type": "double", "name": "ride_time", "required": true},
+  {"type": "double", "name": "trip_distance", "required": true}]}'
+source: '{"tags": {"mlflow.user": "Lea", "mlflow.source.name": "C:\\Public\\ais\\ais-taxi-rides-g2\\.venv\\Scripts\\train-logistic-regression-classifier",
+  "mlflow.source.type": "LOCAL"}}'
+source_type: code

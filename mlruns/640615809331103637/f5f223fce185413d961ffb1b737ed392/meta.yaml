@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Public/ais/ais-taxi-rides-g2/mlruns/640615809331103637/f5f223fce185413d961ffb1b737ed392/artifacts
+end_time: 1751007535991
+entry_point_name: ''
+experiment_id: '640615809331103637'
+lifecycle_stage: active
+run_id: f5f223fce185413d961ffb1b737ed392
+run_name: brawny-carp-388
+run_uuid: f5f223fce185413d961ffb1b737ed392
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1751007402306
+status: 3
+tags: []
+user_id: Lea

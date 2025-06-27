@@ -1,0 +1,8 @@
+digest: 56c1c00a
+name: dataset
+profile: '{"num_rows": 533935, "num_elements": 1067870}'
+schema: '{"mlflow_colspec": [{"type": "double", "name": "ride_time", "required": true},
+  {"type": "double", "name": "trip_distance", "required": true}]}'
+source: '{"tags": {"mlflow.user": "Lea", "mlflow.source.name": "C:\\Public\\ais\\ais-taxi-rides-g2\\.venv\\Scripts\\train-random-forest-classifier",
+  "mlflow.source.type": "LOCAL"}}'
+source_type: code
